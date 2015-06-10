@@ -32,7 +32,14 @@ document.getElementById("set").onclick = function() {
 	});
 	//window.close();
 }
+chrome.runtime.onMessage.addListener(
+  function(request, sender, sendResponse) {
+    if (request.method === "Update") {
+    	populateTable();
+    	sendResponse({status: 200});
+    }
 
+});
 function populateTable(){
 	var Tasks=JSON.parse(localStorage["Tasks"]);
 	var $tbody= $("tbody");
