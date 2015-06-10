@@ -10,7 +10,7 @@ if(!localStorage["Tasks"]){
 			}
 			else
 			{
-				localStorage["Tasks"]=items.data
+				localStorage["Tasks"]=JSON.stringify(items.data);
 			}
 		}
 	});
