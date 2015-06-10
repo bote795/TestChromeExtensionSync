@@ -1,7 +1,19 @@
 
 // popup.js
 if(!localStorage["Tasks"]){
-	localStorage["Tasks"]= JSON.stringify([]);
+	chrome.storage.sync.get("data", function(items) {
+		if (!chrome.runtime.error) {
+			console.log(items);
+			if(typeof items == "undefined")
+			{
+				localStorage["Tasks"]= JSON.stringify([]);
+			}
+			else
+			{
+				localStorage["Tasks"]=items.data
+			}
+		}
+	});
 }
 document.body.onload = function() {
 	populateTable();
