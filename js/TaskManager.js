@@ -24,7 +24,7 @@ var taskManager = new function() {
     }
     this.delete = function(pos) {
     	var Tasks= this.load();
-    	Tasks.splie(pos,1);
+    	Tasks.splice(pos,1);
     	this.save(Tasks);
     };
     this.deleteAll = function(){

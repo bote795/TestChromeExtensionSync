@@ -1,6 +1,6 @@
-
 // popup.js
-if(localStorage[taskManager.tasks] == "[]"){
+jQuery(function( $ ) {
+  if(localStorage[taskManager.tasks] == "[]"){
 	chrome.storage.sync.get("data", function(items) {
 		if (!chrome.runtime.error) {
 			console.log(items);
@@ -18,11 +18,13 @@ if(localStorage[taskManager.tasks] == "[]"){
 document.body.onload = function() {
 	populateTable();
 }
-
 document.getElementById("set").onclick = function() {
 	var d = document.getElementById("task").value;
 	taskManager.add(d);
 }
+
+
+//re-draws table with tasks when a new item has been added
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.method === "Update") {
@@ -36,14 +38,29 @@ function populateTable(){
 	var $tbody= $("tbody");
 	$tbody.empty();
 	for (var i = Tasks.length - 1; i >= 0; i--) {
-		$tbody.append(createRow(Tasks[i]));
+		$tbody.append(createRow(Tasks[i],i));
 	};
+	addJquerys();
 }
-function createRow(data)
+function createRow(data, id)
 {
 	return "<tr>"+
 			"<td>" + data +
-				"<a href='#'' class='btn btn-primary btn-xs pull-right'>Delete</a>"+
+				"<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete' id="+id+">Delete</a>"+
 			"</td>"+
 			"</tr>";
 }
+
+function addJquerys()
+{
+	buttonDelete();
+}
+function buttonDelete () {
+	$(".delete").on('click', function() {
+		taskManager.delete(this.id);
+	});
+}
+});//close jquery
+
+
+
