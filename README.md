@@ -1,0 +1,14 @@
+#To Do List 
+This is a public repo of a To Do List chrome extension.
+Main focus is good use of chrome storage sync.
+
+#Project Information 
+
+##Goal
+Create a chrome extension that will sync in different chrome browsers and keep track of things you need to do.
+
+##Description
+Easy way of being able to have a list on the go of things to do.
+
+##Development Pics
+![6.11.15](http://i.gyazo.com/93d5df9951d29d712140f9e2a44b2447.png)
