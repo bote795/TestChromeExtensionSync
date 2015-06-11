@@ -18,11 +18,14 @@ jQuery(function( $ ) {
 document.body.onload = function() {
 	populateTable();
 }
-document.getElementById("set").onclick = function() {
+document.getElementById("add").onclick = function() {
 	var d = document.getElementById("task").value;
 	taskManager.add(d);
 }
 
+document.getElementById("deleteAll").onclick = function() {
+	taskManager.deleteAll();
+}
 
 //re-draws table with tasks when a new item has been added
 chrome.runtime.onMessage.addListener(
@@ -46,7 +49,7 @@ function createRow(data, id)
 {
 	return "<tr>"+
 			"<td>" + data +
-				"<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete' id="+id+">Delete</a>"+
+				"<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete' data-index="+id+">Delete</a>"+
 			"</td>"+
 			"</tr>";
 }
@@ -57,7 +60,7 @@ function addJquerys()
 }
 function buttonDelete () {
 	$(".delete").on('click', function() {
-		taskManager.delete(this.id);
+		taskManager.delete(this["data-index"]);
 	});
 }
 });//close jquery
