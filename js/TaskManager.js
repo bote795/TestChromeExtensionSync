@@ -9,7 +9,7 @@ var taskManager = new function() {
 			localStorage[this.tasks]=JSON.stringify(Array);
 			this.sync(Array);
     };
-    this.add = function(newTask) {
+    this.add = function(newTask, populateTable) {
     	var Tasks= this.load();
 		Tasks.push(newTask);
 		this.save(Tasks);

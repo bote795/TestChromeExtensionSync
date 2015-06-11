@@ -20,7 +20,7 @@ document.body.onload = function() {
 }
 document.getElementById("add").onclick = function() {
 	var d = document.getElementById("task").value;
-	taskManager.add(d);
+	taskManager.add(d,populateTable);
 }
 
 document.getElementById("deleteAll").onclick = function() {
