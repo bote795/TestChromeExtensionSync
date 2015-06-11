@@ -1,16 +1,16 @@
 
 // popup.js
-if(!localStorage["Tasks"]){
+if(localStorage[taskManager.tasks] == "[]"){
 	chrome.storage.sync.get("data", function(items) {
 		if (!chrome.runtime.error) {
 			console.log(items);
 			if(typeof items == "undefined")
 			{
-				localStorage["Tasks"]= JSON.stringify([]);
+				localStorage[taskManager.tasks]= JSON.stringify([]);
 			}
 			else
 			{
-				localStorage["Tasks"]=JSON.stringify(items.data);
+				localStorage[taskManager.tasks]=JSON.stringify(items.data);
 			}
 		}
 	});
@@ -21,16 +21,7 @@ document.body.onload = function() {
 
 document.getElementById("set").onclick = function() {
 	var d = document.getElementById("task").value;
-	var Tasks=JSON.parse(localStorage["Tasks"]);
-	Tasks.push(d);
-	localStorage["Tasks"]=JSON.stringify(Tasks);
-	populateTable();
-	chrome.storage.sync.set({ "data" : Tasks }, function() {
-		if (chrome.runtime.error) {
-			console.log("Runtime error.");
-		}
-	});
-	//window.close();
+	taskManager.add(d);
 }
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
@@ -41,7 +32,7 @@ chrome.runtime.onMessage.addListener(
 
 });
 function populateTable(){
-	var Tasks=JSON.parse(localStorage["Tasks"]);
+	var Tasks=taskManager.load();
 	var $tbody= $("tbody");
 	$tbody.empty();
 	for (var i = Tasks.length - 1; i >= 0; i--) {
@@ -51,6 +42,8 @@ function populateTable(){
 function createRow(data)
 {
 	return "<tr>"+
-			"<td>" + data +"</td>"+
+			"<td>" + data +
+				"<a href='#'' class='btn btn-primary btn-xs pull-right'>Delete</a>"+
+			"</td>"+
 			"</tr>";
 }
