@@ -70,7 +70,7 @@ function addJquerys()
 }
 //handles click for delete one item button
 function buttonDelete () {
-	$("body").on('click', ".delete", function() {
+	$("body").on('click', ".delete", function() { //for any buttons with delete will receieve the request
 		var rowId=this.parentElement.parentElement.parentNode["attributes"][0]["nodeValue"];
 		taskManager.delete(rowId);
 	});
