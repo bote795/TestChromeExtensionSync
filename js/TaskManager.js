@@ -30,4 +30,9 @@ var taskManager = new function() {
     this.deleteAll = function(){
     	this.save([]);
     };
+    this.getTask = function  () {
+        var temp = document.getElementById("task").value;
+        document.getElementById("task").value = ' ';
+        return temp;
+    }
 }

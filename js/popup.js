@@ -17,9 +17,11 @@ jQuery(function( $ ) {
 }
 document.body.onload = function() {
 	populateTable();
+	autoClickSave();
+	buttonDelete();
 }
 document.getElementById("add").onclick = function() {
-	var d = document.getElementById("task").value;
+	var d = taskManager.getTask();
 	taskManager.add(d,populateTable);
 }
 
@@ -45,22 +47,43 @@ function populateTable(){
 	};
 	addJquerys();
 }
+function MenuCreation () {
+	var dataInMenu="<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete'>Delete</a>";
+	return dataInMenu;
+}
 function createRow(data, id)
 {
+	var menu = "<a class='btn btn-xs btn-danger pull-right' role='button' data-toggle='popover' title='' data-placement='left'>Menu</a>";
+
 	return "<tr>"+
-			"<td>" + data +
-				"<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete' data-index="+id+">Delete</a>"+
+			"<td data-value="+id+">" + data +
+				menu +
 			"</td>"+
 			"</tr>";
 }
-
+//function usd to reload all functons that are used by
+//the items generated dynamically
 function addJquerys()
 {
-	buttonDelete();
+	$('[data-toggle="popover"]').popover({animation:true, content:MenuCreation(), html:true});
+	
 }
+//handles click for delete one item button
 function buttonDelete () {
-	$(".delete").on('click', function() {
-		taskManager.delete(this["data-index"]);
+	$("body").on('click', ".delete", function() {
+		var rowId=this.parentElement.parentElement.parentNode["attributes"][0]["nodeValue"];
+		taskManager.delete(rowId);
+	});
+}
+
+function autoClickSave () {
+	// save task
+	$(".add").keydown( function(e) {
+			// Enter - save task
+			if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
+				e.preventDefault();
+				$('#add').click();
+			} 
 	});
 }
 });//close jquery
