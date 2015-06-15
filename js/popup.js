@@ -42,7 +42,7 @@ chrome.runtime.onMessage.addListener(
 //adds the elements dynamically
 function populateTable(){
 	var Tasks=taskManager.load();
-	var $tbody= $("tbody");
+	var $tbody= $("ul");
 	$tbody.empty();
 	for (var i = Tasks.length - 1; i >= 0; i--) {
 		$tbody.append(createRow(Tasks[i],i));
@@ -61,8 +61,8 @@ function MenuCreation () {
 
 //creates ReadMe
 function readMe (data,id) {
-	
-   var temp =data.substring(0,40) +"<a data-toggle='collapse' data-target='#"+id+"'> See More..." + popover() +"</a>"+
+   var toggle= "<span class='glyphicon glyphicon-collapse-down pull-right' aria-hidden='true'></span>"; //ask for input
+   var temp =data.substring(0,40) +"</label><a data-toggle='collapse' data-target='#"+id+"'> See More..." + popover() +"</a>"+
   "<div id='"+id+"' class='collapse'>"+
     data.substring(50,data.length-1)+
   "</div>"
@@ -71,8 +71,8 @@ function readMe (data,id) {
 function createRow(data, id)
 {
 	
-	var row="<tr>"+
-			"<td data-value="+id+">"; 
+	var row="<li class='list-group-item'>"+
+			"<div class='checkbox checkbox-circle'><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
 	 		//if more than 50 make it have a ReadMore collapse
 	 		//if doesnt fit in one line add a readmore so it dsnt cloge up UI
 			if (data.length > 50) 
@@ -81,12 +81,11 @@ function createRow(data, id)
 			}
 			else
 			{	
-				row +=data; 
+				row +=data+"</label>"; 
 				row += popover();
 			}
 			
-			row +="</td>"+
-			"</tr>";
+			row +="</div></li>";
 	return row;
 }
 //function usd to reload all functons that are used by
