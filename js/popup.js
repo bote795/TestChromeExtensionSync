@@ -51,8 +51,9 @@ function populateTable(){
 }
 //adds data inside the popover
 function popover () {
-	var menu = "<a class='btn btn-xs btn-danger pull-right' role='button' data-toggle='popover' title='' data-placement='left'><span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span></a>";
-	return menu;
+	var menu = "<a class='btn btn-xs btn-info pull-right' role='button' data-toggle='popover' title='' data-placement='left'><span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span></a>";
+	var edit = "<a class='btn btn-xs btn-danger pull-right' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
+	return edit+menu;
 }
 function MenuCreation () {
 	var dataInMenu="<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete'>Delete</a>";
