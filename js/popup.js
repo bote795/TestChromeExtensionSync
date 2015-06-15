@@ -72,7 +72,7 @@ function readMe (data,id) {
 function createRow(data, id)
 {
 	
-	var row="<li class='list-group-item'>"+
+	var row="<li class='list-group-item ui-state-default'>"+
 			"<div class='checkbox checkbox-circle'><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
 	 		//if more than 50 make it have a ReadMore collapse
 	 		//if doesnt fit in one line add a readmore so it dsnt cloge up UI
@@ -94,6 +94,8 @@ function createRow(data, id)
 function addJquerys()
 {
 	$('[data-toggle="popover"]').popover({animation:true, content:MenuCreation(), html:true});
+	$( "#data" ).sortable();
+    $( "#data" ).disableSelection();
 	
 }
 //handles click for delete one item button
