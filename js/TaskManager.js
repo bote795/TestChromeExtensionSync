@@ -9,11 +9,11 @@ var taskManager = new function() {
 			localStorage[this.tasks]=JSON.stringify(Array);
 			this.sync(Array);
     };
-    this.add = function(newTask, populateTable) {
+    this.add = function(newTask, populateTable,$) {
     	var Tasks= this.load();
 		Tasks.push(newTask);
 		this.save(Tasks);
-		populateTable();
+		populateTable($);
     };
     this.sync = function (Tasks) {
 		chrome.storage.sync.set({ "data" : Tasks }, function() {
