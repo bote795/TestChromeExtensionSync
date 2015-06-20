@@ -15,6 +15,8 @@ document.body.onload = function() {
 	UI.populateTable($);
 	UI.autoClickSave($);
 	UI.buttonDelete($);
+	UI.checkEvent($);
+	
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();

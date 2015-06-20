@@ -3,7 +3,7 @@ var TaskManager =  function () {
 }
 inheritsFrom(TaskManager, Manager);
 
-TaskManager.prototype.delete = function(pos) {
+TaskManager.prototype.completed = function(pos) {
     var array= this.load();
     historyManager.add(array[pos]);
     array.splice(pos,1);

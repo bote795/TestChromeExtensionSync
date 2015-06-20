@@ -78,4 +78,15 @@ var UI = new function() {
 				} 
 		});
 	}
+
+	//handles the check going to history
+	this.checkEvent = function ($){
+		$("body").on('change', "input[type='checkbox']", function(){
+			if(this.checked) {
+		        var rowId=this.parentElement["attributes"][1]["nodeValue"];
+				taskManager.completed(rowId);
+				//TODO: add a banner that pops up n says saved to history
+		    }
+		});
+	}
 };
