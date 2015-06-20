@@ -1,16 +1,16 @@
 // popup.js
 jQuery(function( $ ) {
-  if(localStorage[taskManager.tasks] == "[]"){
-	chrome.storage.sync.get("data", function(items) {
+  if(localStorage[taskManager.key] == "[]" || typeof localStorage[taskManager.key] == "undefined"){
+	chrome.storage.sync.get(taskManager.key, function(items) {
 		if (!chrome.runtime.error) {
 			console.log(items);
-			if(typeof items == "undefined")
+			if(typeof items.data == undefined)
 			{
-				localStorage[taskManager.tasks]= JSON.stringify([]);
+				localStorage[taskManager.key]= JSON.stringify([]);
 			}
 			else
 			{
-				localStorage[taskManager.tasks]=JSON.stringify(items.data);
+				localStorage[taskManager.key]=JSON.stringify(items.data);
 			}
 		}
 	});
