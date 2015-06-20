@@ -22,7 +22,7 @@ document.body.onload = function() {
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();
-	taskManager.add(d,UI.populateTable,$);
+	taskManager.add(d);
 }
 
 document.getElementById("deleteAll").onclick = function() {

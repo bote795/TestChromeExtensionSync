@@ -10,12 +10,11 @@ var Manager = function() {
 			localStorage[this.key]=JSON.stringify(Array);
 			this.sync(Array);
     };
-    Manager.prototype.add = function(newItem, populateTable,$) {
+    Manager.prototype.add = function(newItem) {
     	var array= this.load();
         console.log(array);
 		array.push(newItem);
 		this.save(array);
-		populateTable($);
     };
     Manager.prototype.sync = function (array) {
         var save={};
@@ -30,7 +29,6 @@ var Manager = function() {
     	var array= this.load();
     	array.splice(pos,1);
     	this.save(array);
-        UI.populateTable($);
     };
     Manager.prototype.deleteAll = function(){
     	this.save([]);
