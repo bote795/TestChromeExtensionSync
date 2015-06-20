@@ -1,17 +1,13 @@
 // popup.js
 jQuery(function( $ ) {
-  if(localStorage[taskManager.key] == "[]" || typeof localStorage[taskManager.key] == "undefined"){
+  if(localStorage[taskManager.key] == "[]" || localStorage[taskManager.key] == undefined){
 	chrome.storage.sync.get(taskManager.key, function(items) {
 		if (!chrome.runtime.error) {
-			console.log(items);
-			if(items.data == undefined)
-			{
-				localStorage[taskManager.key]= JSON.stringify([]);
-			}
-			else
-			{
-				localStorage[taskManager.key]=JSON.stringify(items.data);
-			}
+			localStorage[taskManager.key]=JSON.stringify(items.task);
+		}
+		else
+		{
+			localStorage[taskManager.key]= JSON.stringify([]);
 		}
 	});
 }

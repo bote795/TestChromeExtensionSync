@@ -3,7 +3,10 @@ var Manager = function() {
     this.key = "key";
  };       
     Manager.prototype.load = function(){
-        console.log(this.key);
+        if (localStorage[this.key] == undefined) 
+        {
+            localStorage[this.key]= JSON.stringify([]);
+        };
     	return JSON.parse(localStorage[this.key]);
     };
     Manager.prototype.save = function(Array){
@@ -12,7 +15,6 @@ var Manager = function() {
     };
     Manager.prototype.add = function(newItem) {
     	var array= this.load();
-        console.log(array);
 		array.push(newItem);
 		this.save(array);
     };
@@ -38,7 +40,6 @@ var Manager = function() {
         document.getElementById(this.key).value = ' ';
         return temp;
     };
-
 
 var inheritsFrom = function (child, parent) {
     child.prototype = Object.create(parent.prototype);
