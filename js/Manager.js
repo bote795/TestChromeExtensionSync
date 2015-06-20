@@ -26,10 +26,11 @@ var Manager = function() {
 			}
 		});
     }
-    Manager.prototype.delete = function(pos) {
+    Manager.prototype.delete = function(pos,populateTable,$) {
     	var array= this.load();
     	array.splice(pos,1);
     	this.save(array);
+        populateTable($);
     };
     Manager.prototype.deleteAll = function(){
     	this.save([]);

@@ -4,7 +4,7 @@ jQuery(function( $ ) {
 	chrome.storage.sync.get(taskManager.key, function(items) {
 		if (!chrome.runtime.error) {
 			console.log(items);
-			if(typeof items.data == undefined)
+			if(items.data == undefined)
 			{
 				localStorage[taskManager.key]= JSON.stringify([]);
 			}
@@ -18,7 +18,7 @@ jQuery(function( $ ) {
 document.body.onload = function() {
 	UI.populateTable($);
 	UI.autoClickSave($);
-	UI.buttonDelete($);
+	UI.buttonDelete($,populateTable,$);
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();
