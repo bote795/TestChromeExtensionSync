@@ -30,7 +30,7 @@ var Manager = function() {
     	var array= this.load();
     	array.splice(pos,1);
     	this.save(array);
-        populateTable($);
+        UI.populateTable($);
     };
     Manager.prototype.deleteAll = function(){
     	this.save([]);

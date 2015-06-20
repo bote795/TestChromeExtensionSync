@@ -61,10 +61,10 @@ var UI = new function() {
 		
 	}
 	//handles click for delete one item button
-	this.buttonDelete =function  ($) {
+	this.buttonDelete =function  ($,populateTable) {
 		$("body").on('click', ".delete", function() { //for any buttons with delete will receieve the request
 			var rowId=this.parentElement.parentElement.parentNode["attributes"][1]["nodeValue"];
-			taskManager.delete(rowId);
+			taskManager.delete(rowId,populateTable,$);
 		});
 	}
 
