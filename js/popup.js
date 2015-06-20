@@ -18,7 +18,7 @@ jQuery(function( $ ) {
 document.body.onload = function() {
 	UI.populateTable($);
 	UI.autoClickSave($);
-	UI.buttonDelete($,UI.populateTable);
+	UI.buttonDelete($);
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();

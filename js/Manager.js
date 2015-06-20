@@ -26,7 +26,7 @@ var Manager = function() {
 			}
 		});
     }
-    Manager.prototype.delete = function(pos,populateTable,$) {
+    Manager.prototype.delete = function(pos) {
     	var array= this.load();
     	array.splice(pos,1);
     	this.save(array);
