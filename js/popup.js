@@ -8,7 +8,6 @@ jQuery(function( $ ) {
 		}
 	});
 }
-//chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
 document.body.onload = function() {
 	UI.populateTable($);
 	UI.autoClickSave($);
@@ -19,7 +18,9 @@ document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();
 	taskManager.add(d);
 }
-
+document.getElementById("options").onclick = function() {
+	chrome.runtime.openOptionsPage();
+}
 document.getElementById("deleteAll").onclick = function() {
 	taskManager.deleteAll();
 }
@@ -32,9 +33,7 @@ chrome.runtime.onMessage.addListener(
     	UI.populateTable($);
     	sendResponse({status: 200});
     }
-
 });
-//----------------UI---------------------------
 
 });//close jquery
 
