@@ -5,6 +5,7 @@ inheritsFrom(HistoryManager, Manager);
 HistoryManager.prototype.add = function(newItem) {
 	var array= this.load();
 	array.push([newItem,Date.now()]);
+	alert("Task has been stored in history");
 	this.save(array);
 };
 var historyManager = new HistoryManager(); 

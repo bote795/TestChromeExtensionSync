@@ -1,22 +1,19 @@
 // popup.js
 jQuery(function( $ ) {
   if(localStorage[taskManager.key] == "[]" || localStorage[taskManager.key] == undefined){
+  	localStorage[taskManager.key]= JSON.stringify([]);
 	chrome.storage.sync.get(taskManager.key, function(items) {
-		if (!chrome.runtime.error) {
+		if (!chrome.runtime.error && items.task != undefined) {
 			localStorage[taskManager.key]=JSON.stringify(items.task);
-		}
-		else
-		{
-			localStorage[taskManager.key]= JSON.stringify([]);
 		}
 	});
 }
+//chrome.tabs.create({ 'url': 'chrome://extensions/?options=' + chrome.runtime.id });
 document.body.onload = function() {
 	UI.populateTable($);
 	UI.autoClickSave($);
 	UI.buttonDelete($);
 	UI.checkEvent($);
-	
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();
@@ -26,6 +23,7 @@ document.getElementById("add").onclick = function() {
 document.getElementById("deleteAll").onclick = function() {
 	taskManager.deleteAll();
 }
+
 
 //re-draws table with tasks when a new item has been added
 chrome.runtime.onMessage.addListener(
