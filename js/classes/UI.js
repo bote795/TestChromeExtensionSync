@@ -19,6 +19,7 @@ var UI = new function() {
 	  "</div>"
 	  return temp;
 	}
+	//creates row for popup.html
 	this.createRow =function (data, id)
 	{
 		
@@ -39,6 +40,15 @@ var UI = new function() {
 				row +="</div></li>";
 		return row;
 	}
+	//creates row for options.html
+	this.createOptionsRow = function(data, id)
+	{
+		var row="<li class='list-group-item'>"+
+				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
+		row +=data+"</label>";
+
+		return row;
+	}
 	//------------------Jquery based APIS---------------------
 	//adds the elements dynamically
 	this.populateTable = function ($){
@@ -51,6 +61,16 @@ var UI = new function() {
 		UI.addJquerys($);
 	}
 	
+	//adds the elements dynamically
+	this.populateOptionsTable = function ($){
+		var Tasks=historyManager.load();
+		var $tbody= $("#data");
+		$tbody.empty();
+		for (var i = Tasks.length - 1; i >= 0; i--) {
+			$tbody.append(UI.createOptionsRow(Tasks[i][0],i));
+		};
+	}
+
 	//function usd to reload all functons that are used by
 	//the items generated dynamically
 	this.addJquerys = function ($)
@@ -80,13 +100,21 @@ var UI = new function() {
 	}
 
 	//handles the check going to history
-	this.checkEvent = function ($){
+	this.checkEvent = function ($, page){
+		page = typeof page !== 'undefined' ? page : 'popup';
 		$("body").on('change', "input[type='checkbox']", function(){
-			if(this.checked) {
-		        var rowId=this.parentElement["attributes"][1]["nodeValue"];
+	        var rowId=this.parentElement["attributes"][1]["nodeValue"];
+			if(this.checked && page == 'popup') {
 				taskManager.completed(rowId);
 				//TODO: add a banner that pops up n says saved to history
 		    }
+			else if(this.checked && page == 'options') {
+		        console.log(this);
+		        console.log(rowId)
+
+				//TODO: add a banner that pops up n says saved to history
+		    }
+
 		});
 	}
 };
