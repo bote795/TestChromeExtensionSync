@@ -109,10 +109,7 @@ var UI = new function() {
 				//TODO: add a banner that pops up n says saved to history
 		    }
 			else if(this.checked && page == 'options') {
-		        console.log(this);
-		        console.log(rowId)
-
-				//TODO: add a banner that pops up n says saved to history
+		        historyManager.restore(rowId);
 		    }
 
 		});

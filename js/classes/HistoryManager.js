@@ -8,4 +8,10 @@ HistoryManager.prototype.add = function(newItem) {
 	alert("Task has been stored in history");
 	this.save(array);
 };
+HistoryManager.prototype.restore = function(pos) {
+    var array= this.load();
+    taskManager.add(array[pos][0]);
+    array.splice(pos,1);
+    this.save(array);
+};
 var historyManager = new HistoryManager(); 
