@@ -1,6 +1,7 @@
 //options.js
 jQuery(function( $ ) {
 document.body.onload = function() {
+	//check if data must be let go
 	UI.populateOptionsTable($);
 	UI.checkEvent($, "options");
 }
