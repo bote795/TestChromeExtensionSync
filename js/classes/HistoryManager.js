@@ -35,9 +35,13 @@ HistoryManager.prototype.addDays = function (myDate,days) {
 
 //has event passed already
 HistoryManager.prototype.isExperinced = function(timeStamp) {
-	var currentDay = new Date(timeStamp);
-	if( currentDay < HistoryManager.addDays(currentDay, 7))//its been 7 days
+	var createdDay = new Date(timeStamp); 
+	var currentDay = new Date();
+	var futureDay = this.addDays(createdDay, 7);
+	if( currentDay > futureDay)//its been 7 days
 	{
+		console.log(currentDay);
+		console.log(futureDay);
 		return true;		
 	}
 	return false;

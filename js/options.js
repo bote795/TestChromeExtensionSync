@@ -2,6 +2,7 @@
 jQuery(function( $ ) {
 document.body.onload = function() {
 	//check if data must be let go
+	historyManager.cleanData();
 	UI.populateOptionsTable($);
 	UI.checkEvent($, "options");
 }
