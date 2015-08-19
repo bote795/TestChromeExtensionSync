@@ -40,8 +40,6 @@ HistoryManager.prototype.isExperinced = function(timeStamp) {
 	var futureDay = this.addDays(createdDay, 7);
 	if( currentDay > futureDay)//its been 7 days
 	{
-		console.log(currentDay);
-		console.log(futureDay);
 		return true;		
 	}
 	return false;
