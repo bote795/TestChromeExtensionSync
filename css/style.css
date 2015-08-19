@@ -1,0 +1,17 @@
+textarea {
+	display: block;
+	width: 100%;
+	margin: -4px -6px -5px;
+	padding: 3px 5px 2px;
+	border: 1px solid #ABADBA;
+	border-radius: 2px;
+	background: #FFF;
+	box-shadow: inset 1px 1px 3px rgba(0,0,0,.12);
+	outline: none;
+	font: inherit;
+	overflow: hidden;
+	resize: none;
+}
+.editable {
+	display: none;
+}

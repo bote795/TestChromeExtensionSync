@@ -19,6 +19,9 @@ var UI = new function() {
 	  "</div>"
 	  return temp;
 	}
+	this.edit = function (data) {
+		return "<textarea class='editable'>"+ data +"</textarea>";
+	}
 	//creates row for popup.html
 	this.createRow =function (data, id)
 	{
@@ -36,7 +39,7 @@ var UI = new function() {
 					row +=data+"</label>"; 
 					row += this.popover();
 				}
-				
+				row+= this.edit(data);
 				row +="</div></li>";
 		return row;
 	}
