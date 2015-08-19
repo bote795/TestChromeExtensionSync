@@ -2,7 +2,7 @@ var UI = new function() {
 	//adds data inside the popover
 	this.popover = function() {
 		var menu = "<a class='btn btn-xs btn-info pull-right' role='button' data-toggle='popover' title='' data-placement='left'><span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span></a>";
-		var edit = "<a class='btn btn-xs btn-danger pull-right' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
+		var edit = "<a class='btn btn-xs btn-danger pull-right edit' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
 		return edit+menu;
 	}
 	this.MenuCreation = function() {
@@ -19,15 +19,15 @@ var UI = new function() {
 	  "</div>"
 	  return temp;
 	}
-	this.edit = function (data) {
-		return "<textarea class='editable'>"+ data +"</textarea>";
+	this.edit = function (id,data) {
+		return "<textarea class='editable editable"+id+"'>"+ data +"</textarea>";
 	}
 	//creates row for popup.html
 	this.createRow =function (data, id)
 	{
 		
 		var row="<li class='list-group-item ui-state-default'>"+
-				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
+				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><div class='noneEditable"+id+"'><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
 		 		//if more than 50 make it have a ReadMore collapse
 		 		//if doesnt fit in one line add a readmore so it dsnt cloge up UI
 				if (data.length > 50) 
@@ -39,7 +39,7 @@ var UI = new function() {
 					row +=data+"</label>"; 
 					row += this.popover();
 				}
-				row+= this.edit(data);
+				row+= "</div>"+this.edit(id,data);
 				row +="</div></li>";
 		return row;
 	}
@@ -115,6 +115,16 @@ var UI = new function() {
 		        historyManager.restore(rowId);
 		    }
 
+		});
+	}
+
+	//handles the hiding of the item and pulls up the edit textbox
+	this.editButton = function ($){
+		$("body").on('click', ".edit", function() { //for any buttons with delete will receieve the request
+			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
+			console.log(rowId);
+			$(".noneEditable"+rowId+"").hide();
+			$(".editable"+rowId+"").show();
 		});
 	}
 };

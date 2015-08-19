@@ -13,6 +13,7 @@ document.body.onload = function() {
 	UI.autoClickSave($);
 	UI.buttonDelete($);
 	UI.checkEvent($);
+	UI.editButton($);
 }
 document.getElementById("add").onclick = function() {
 	var d = taskManager.getTask();
