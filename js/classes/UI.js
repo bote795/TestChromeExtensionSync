@@ -26,7 +26,7 @@ var UI = new function() {
 	this.createRow =function (data, id)
 	{
 		
-		var row="<li class='list-group-item ui-state-default'>"+
+		var row="<li class='list-group-item ui-state-default' id='"+id+"'>"+
 				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><div class='noneEditable"+id+"'><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
 		 		//if more than 50 make it have a ReadMore collapse
 		 		//if doesnt fit in one line add a readmore so it dsnt cloge up UI
@@ -79,7 +79,14 @@ var UI = new function() {
 	this.addJquerys = function ($)
 	{
 		$('[data-toggle="popover"]').popover({animation:true, content:this.MenuCreation($), html:true});
-		$( "#data" ).sortable();
+		$( "#data" ).sortable({
+			 axis: "y",
+			 update: function( event, ui ) {
+			 	var temp=$('#data').sortable('toArray');
+			 	taskManager.reOrder(temp);
+			 	console.log(temp);
+			 }
+		});
 	    $( "#data" ).disableSelection();
 		
 	}
