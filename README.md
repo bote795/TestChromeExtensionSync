@@ -10,6 +10,13 @@ Create a chrome extension that will sync in different chrome browsers and keep t
 ##Description
 Easy way of being able to have a list on the go of things to do.
 
+##Features
+1. Sync across browsers
+2. Auto Deletes items completed after two weeks
+3. Ability to restore items accidently marked as completed
+4. Ability to drag and sort items
+5. if text to longs shortens it and gives option to readMore
+
 ##Development Pics
 
 1. Proto type 1 6.11.15:  
