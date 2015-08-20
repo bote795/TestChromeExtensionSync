@@ -47,8 +47,8 @@ var UI = new function() {
 	this.createOptionsRow = function(data, id)
 	{
 		var row="<li class='list-group-item'>"+
-				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
-		row +=data+"</label>";
+				"<div class='checkbox checkbox-circle' nodeValue='"+id+"''><div><input type='checkbox' id='"+id+"checkbox' class='styled'><label for='"+id+"checkbox'>"; 
+		row +=data+"</div></label>";
 
 		return row;
 	}
