@@ -86,7 +86,7 @@ var UI = new function() {
 	//handles click for delete one item button
 	this.buttonDelete =function  ($) {
 		$("body").on('click', ".delete", function() { //for any buttons with delete will receieve the request
-			var rowId=this.parentElement.parentElement.parentNode["attributes"][1]["nodeValue"];
+			var rowId=this.parentElement.parentElement.parentElement.parentNode["attributes"][1]["nodeValue"];
 			taskManager.delete(rowId);
 		});
 	}
@@ -106,7 +106,7 @@ var UI = new function() {
 	this.checkEvent = function ($, page){
 		page = typeof page !== 'undefined' ? page : 'popup';
 		$("body").on('change', "input[type='checkbox']", function(){
-	        var rowId=this.parentElement["attributes"][1]["nodeValue"];
+	        var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
 			if(this.checked && page == 'popup') {
 				taskManager.completed(rowId);
 				//TODO: add a banner that pops up n says saved to history
@@ -122,9 +122,19 @@ var UI = new function() {
 	this.editButton = function ($){
 		$("body").on('click', ".edit", function() { //for any buttons with delete will receieve the request
 			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
-			console.log(rowId);
 			$(".noneEditable"+rowId+"").hide();
 			$(".editable"+rowId+"").show();
+			$(".editable").keydown( function(e) {
+				// Enter - save task
+				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
+					e.preventDefault();
+					taskManager.edit(rowId, this.value);
+					console.log("save");
+					$(".noneEditable"+rowId+"").show();
+					$(".editable"+rowId+"").hide();
+
+				} 
+		});
 		});
 	}
 };

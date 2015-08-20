@@ -18,6 +18,11 @@ var Manager = function() {
 		array.push(newItem);
 		this.save(array);
     };
+    Manager.prototype.edit = function(id, newItem){
+        var array = this.load();
+        array[id]=newItem;
+        this.save(array);
+    }
     Manager.prototype.sync = function (array) {
         var save={};
         save[this.key]=array;
