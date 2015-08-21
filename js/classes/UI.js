@@ -87,8 +87,7 @@ var UI = new function() {
 			 	console.log(temp);
 			 }
 		});
-	    $( "#data" ).disableSelection();
-		
+	    $( "#data" ).disableSelection();		
 	}
 	//handles click for delete one item button
 	this.buttonDelete =function  ($) {
@@ -131,17 +130,28 @@ var UI = new function() {
 			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
 			$(".noneEditable"+rowId+"").hide();
 			$(".editable"+rowId+"").show();
+			$(".editable"+rowId+"").focus();
 			$(".editable").keydown( function(e) {
 				// Enter - save task
 				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
 					e.preventDefault();
 					taskManager.edit(rowId, this.value);
-					console.log("save");
 					$(".noneEditable"+rowId+"").show();
 					$(".editable"+rowId+"").hide();
 
 				} 
+			});
+			//lose focus save edit
+		   	$("ul").on('blur', 'textarea.editable', function() {
+		   		var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
+				var rowId = rowId.replace("Order", "");
+				UI.saveEditTask($,rowId,this.value);
+			})
 		});
-		});
+	}
+	this.saveEditTask = function ($,rowId,value) {
+		taskManager.edit(rowId, value);
+		$(".noneEditable"+rowId+"").show();
+		$(".editable"+rowId+"").hide();
 	}
 };
