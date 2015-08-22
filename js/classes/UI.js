@@ -133,10 +133,10 @@ var UI = new function() {
 			$edit.show();
 			autosize($edit);
 			$edit.focus();
-			//fix this
-			$edit.selectionStart=$edit.value.length;
-			$edit.selectionEnd =$edit.value.length;
-			//
+			//set to cursor to last piece of text
+			$edit[0].selectionStart = $edit[0].value.length;
+			$edit[0].selectionEnd   = $edit[0].value.length;
+			$edit[0].focus();
 			$(".editable").keydown( function(e) {
 				// Enter - save task
 				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
