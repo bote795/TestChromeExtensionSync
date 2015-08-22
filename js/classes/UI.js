@@ -135,10 +135,7 @@ var UI = new function() {
 				// Enter - save task
 				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
 					e.preventDefault();
-					taskManager.edit(rowId, this.value);
-					$(".noneEditable"+rowId+"").show();
-					$(".editable"+rowId+"").hide();
-
+					UI.saveEditTask($,rowId,this.value);
 				} 
 			});
 			//lose focus save edit
@@ -149,6 +146,7 @@ var UI = new function() {
 			})
 		});
 	}
+	//handles saving the edit and takes care of UI
 	this.saveEditTask = function ($,rowId,value) {
 		taskManager.edit(rowId, value);
 		$(".noneEditable"+rowId+"").show();
