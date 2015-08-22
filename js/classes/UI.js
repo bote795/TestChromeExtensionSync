@@ -129,8 +129,14 @@ var UI = new function() {
 		$("body").on('click', ".edit", function() { //for any buttons with delete will receieve the request
 			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
 			$(".noneEditable"+rowId+"").hide();
-			$(".editable"+rowId+"").show();
-			$(".editable"+rowId+"").focus();
+			var $edit=$(".editable"+rowId+"");
+			$edit.show();
+			autosize($edit);
+			$edit.focus();
+			//fix this
+			$edit.selectionStart=$edit.value.length;
+			$edit.selectionEnd =$edit.value.length;
+			//
 			$(".editable").keydown( function(e) {
 				// Enter - save task
 				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
