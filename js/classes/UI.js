@@ -98,6 +98,16 @@ var UI = new function() {
 			var rowId = rowId.replace("Order", "");
 			UI.saveEditTask($,rowId,this.value);
 		})	
+		//$(".editable").keydown( function(e) {
+		$("ul").on('keydown', 'textarea.editable', function(e) {
+				// Enter - save task
+			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
+			if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
+				e.preventDefault();
+				var rowId = rowId.replace("Order", "");
+				UI.saveEditTask($,rowId,this.value);
+			} 
+		});
 	}
 	//handles click for delete one item button
 	this.buttonDelete =function  ($) {
@@ -147,13 +157,6 @@ var UI = new function() {
 			$edit[0].selectionStart = $edit[0].value.length;
 			$edit[0].selectionEnd   = $edit[0].value.length;
 			$edit[0].focus();
-			$(".editable").keydown( function(e) {
-				// Enter - save task
-				if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
-					e.preventDefault();
-					UI.saveEditTask($,rowId,this.value);
-				} 
-			});
 		});
 	}
 	//handles saving the edit and takes care of UI
