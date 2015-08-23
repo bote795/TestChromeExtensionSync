@@ -72,6 +72,10 @@ var UI = new function() {
 		for (var i = Tasks.length - 1; i >= 0; i--) {
 			$tbody.append(UI.createOptionsRow(Tasks[i][0],i));
 		};
+		if (Tasks.length == 0)
+		{
+			$tbody.append("<p>This is no history. History is deleted every two weeks if not restored.</p>");
+		}
 	}
 
 	//function usd to reload all functons that are used by
@@ -87,7 +91,13 @@ var UI = new function() {
 			 	console.log(temp);
 			 }
 		});
-	    $( "#data" ).disableSelection();		
+	    $( "#data" ).disableSelection();	
+		//lose focus save edit
+	   	$("ul").on('blur', 'textarea.editable', function() {
+	   		var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
+			var rowId = rowId.replace("Order", "");
+			UI.saveEditTask($,rowId,this.value);
+		})	
 	}
 	//handles click for delete one item button
 	this.buttonDelete =function  ($) {
@@ -144,12 +154,6 @@ var UI = new function() {
 					UI.saveEditTask($,rowId,this.value);
 				} 
 			});
-			//lose focus save edit
-		   	$("ul").on('blur', 'textarea.editable', function() {
-		   		var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
-				var rowId = rowId.replace("Order", "");
-				UI.saveEditTask($,rowId,this.value);
-			})
 		});
 	}
 	//handles saving the edit and takes care of UI
