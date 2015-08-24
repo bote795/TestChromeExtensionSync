@@ -5,6 +5,7 @@ var UI = new function() {
 		var edit = "<a class='btn btn-xs btn-danger pull-right edit' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
 		return edit+menu;
 	}
+	//creates what goes inside the pop up when pressing ".."
 	this.MenuCreation = function() {
 		var dataInMenu="<button type='button' href='#' class='btn btn-primary btn-xs pull-right delete'>Delete</a>";
 		return dataInMenu;
@@ -19,6 +20,7 @@ var UI = new function() {
 	  "</div>"
 	  return temp;
 	}
+	//adds the editable textarea
 	this.edit = function (id,data) {
 		return "<textarea class='editable editable"+id+"'>"+ data +"</textarea>";
 	}
@@ -88,7 +90,6 @@ var UI = new function() {
 			 update: function( event, ui ) {
 			 	var temp=$('#data').sortable('toArray');
 			 	taskManager.reOrder(temp);
-			 	console.log(temp);
 			 }
 		});
 	    $( "#data" ).disableSelection();	
@@ -100,7 +101,7 @@ var UI = new function() {
 		})	
 		//$(".editable").keydown( function(e) {
 		$("ul").on('keydown', 'textarea.editable', function(e) {
-				// Enter - save task
+			// Enter - save task
 			var rowId=this.parentElement.parentElement["attributes"][1]["nodeValue"];
 			if (e.keyCode == 13 && !e.ctrlKey && !e.shiftKey) {
 				e.preventDefault();
