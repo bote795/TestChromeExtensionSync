@@ -6,6 +6,7 @@ document.body.onload = function() {
 	UI.populateOptionsTable($);
 	UI.checkEvent($, "options");
 }
+//when something changes sends it here
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.method === "Update") {
