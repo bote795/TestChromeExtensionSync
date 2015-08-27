@@ -3,8 +3,8 @@ var UI = new function() {
 	this.popover = function() {
 		var menu = "<a class='btn btn-xs btn-info pull-right' role='button' data-toggle='popover' title='' data-placement='left'><span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span></a>";
 		var edit = "<a class='btn btn-xs btn-danger pull-right edit' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
-		var drag = "<a class='btn btn-xs btn-danger pull-right drag' role='button'><span class='drag glyphicon glyphicon-th' aria-hidden='true style='cursor: -webkit-grabbing;'></span></a>";
-		return drag+edit+menu;
+		var drag = "<a class='btn btn-xs btn pull-right drag' role='button'><span class='drag glyphicon glyphicon-th' aria-hidden='true style='cursor: -webkit-grabbing;'></span></a>";
+		return menu+edit+drag;
 	}
 	
 	//creates what goes inside the pop up when pressing ".."
@@ -15,7 +15,7 @@ var UI = new function() {
 
 	//creates ReadMe
 	this.readMe = function(data,id) {
-	   var toggle= "<span class='glyphicon glyphicon-collapse-down pull-right' aria-hidden='true'></span>"; //ask for input
+	   var toggle= "<span class='glyphicon glyphicon-collapse-down' aria-hidden='true'></span>"; //ask for input
 	   var temp =data.substring(0,40) +"</label><a data-toggle='collapse' data-target='#"+id+"'> See More..." + this.popover() +"</a>"+
 	  "<div id='"+id+"' class='collapse'>"+
 	    data.substring(50,data.length-1)+
