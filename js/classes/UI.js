@@ -3,7 +3,7 @@ var UI = new function() {
 	this.popover = function() {
 		var menu = "<a class='btn btn-xs btn-info pull-right' role='button' data-toggle='popover' title='' data-placement='left'><span class='glyphicon glyphicon-option-horizontal' aria-hidden='true'></span></a>";
 		var edit = "<a class='btn btn-xs btn-danger pull-right edit' role='button'><span class='glyphicon glyphicon-edit' aria-hidden='true'></span></a>";
-		var drag = "<a class='btn btn-xs btn-danger pull-right drag' role='button'><span class='drag glyphicon glyphicon-th' aria-hidden='true data-cursor='-webkit-grabbing' style='cursor: -webkit-grabbing;'></span></a>";
+		var drag = "<a class='btn btn-xs btn-danger pull-right drag' role='button'><span class='drag glyphicon glyphicon-th' aria-hidden='true style='cursor: -webkit-grabbing;'></span></a>";
 		return drag+edit+menu;
 	}
 	
