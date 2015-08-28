@@ -28,3 +28,5 @@ Easy way of being able to have a list on the go of things to do.
 4. Proto type 2 6.16.15:  
 ![6.16.15](http://i.gyazo.com/e3a2eb51a5028d170daf42d59003d81a.png "edit button and new UI class 6.16.15")4. Proto type 2 5. 5. Proto type 8.20.15:  
 ![8.20.15](https://i.gyazo.com/ba4dcb96dbb8f5ba8492d53fdcae2af6.gif "edit button and functionality")
+6. Proto type 8.28.15:  
+![8.28.15](https://i.gyazo.com/ec8aff45df31d3ff38b3abe5760ef1db.png "drag and drop functionality")
