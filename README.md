@@ -1,5 +1,6 @@
 #To Do List ![logo](https://raw.githubusercontent.com/bote795/TestChromeExtensionSync/master/assets/icon128.png)
 This is a public repo of a To Do List chrome extension.
+chrome extension can be found at [chrome Web Store](https://chrome.google.com/webstore/detail/to-do-list/diefbmnnjpehalojdjhaaidlechmnodo)
 Main focus is learn to use of chrome storage sync.
 
 #Project Information 

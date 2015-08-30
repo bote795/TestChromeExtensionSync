@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "",
+  "name": "To-Do List",
   "description": "A simple To Do List",
-  "version": "0.4",
+  "version": "0.1",
   "icons": { "16": "assets/icon.png",
            "48": "assets/icon48.png",
           "128": "assets/icon128.png" },  
