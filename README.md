@@ -33,3 +33,6 @@ Easy way of being able to have a list on the go of things to do.
 ![8.28.15](https://i.gyazo.com/ec8aff45df31d3ff38b3abe5760ef1db.png "drag and drop functionality")
 7. Proto type 8.30.15:  
 ![8.30.15](https://i.gyazo.com/c49cf596edfa89248784ab22b2a621c0.png "added icon")
+
+##Icon
+Icons were created by Erick Garza
