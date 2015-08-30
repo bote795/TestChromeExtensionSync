@@ -13,6 +13,7 @@ HistoryManager.prototype.restore = function(pos) {
     taskManager.add(array[pos][0]);
     array.splice(pos,1);
     this.save(array);
+    alert("Task has been restored to List");
 };
 //go through all history and check if timeStamp is older than a week
 //if so erase it

@@ -1,7 +1,8 @@
 {
-  "name": "SyncExtension",
-  "version": "0.4",
   "manifest_version": 2,
+  "name": "",
+  "description": "A simple To Do List",
+  "version": "0.4",
   "icons": { "16": "assets/icon.png",
            "48": "assets/icon48.png",
           "128": "assets/icon128.png" },  
