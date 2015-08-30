@@ -2,7 +2,9 @@
   "name": "SyncExtension",
   "version": "0.4",
   "manifest_version": 2,
-  
+  "icons": { "16": "assets/icon.png",
+           "48": "assets/icon48.png",
+          "128": "assets/icon128.png" },  
   "description": "Storage Sync Extension",
   "background": {
   	"scripts": ["./js/background.js"]
